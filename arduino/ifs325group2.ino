@@ -25,7 +25,7 @@ const int mqtt_port = 1883;
 volatile int pulseCount = 0;                    // Pulse counter
 const double pulsesPerLiter = 53293.0;          
 double totalLiters = 0.0;                       // Total volume of water passed in liters
-double cycleUsage = 0.0;                        // Water used in current irrigation cycle
+double current_cycle_volume_l = 0.0;            // Water used in current irrigation cycle
 double flowRate = 0.0;                          // Current flow rate in L/min
 
 // --- Timing Configuration ---
@@ -61,7 +61,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
       if (!isPumpOn) {
         Serial.println("Action: Turning pump ON.");
         isPumpOn = true;
-        cycleUsage = 0.0;                       // Reset cycle usage when pump turns ON
+        current_cycle_volume_l = 0.0;                       // Reset cycle usage when pump turns ON
         digitalWrite(RELAY_PIN, LOW);           // Active LOW relay
         digitalWrite(LED_BUILTIN, HIGH);
         Serial.println("Cycle usage reset to 0.0 L");
@@ -73,7 +73,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
       if (isPumpOn) {
         Serial.println("Action: Turning pump OFF.");
         Serial.print("Cycle completed. Total cycle usage: ");
-        Serial.print(cycleUsage, 2);
+        Serial.print(current_cycle_volume_l, 2);
         Serial.println(" L");
         isPumpOn = false;
         digitalWrite(RELAY_PIN, HIGH);          // Active LOW relay
@@ -84,7 +84,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
     else if (message == "RESET_CYCLE") {
       Serial.println("Action: Resetting cycle usage counter.");
-      cycleUsage = 0.0;
+      current_cycle_volume_l = 0.0;
       Serial.println("Cycle usage reset to 0.0 L");
     }
     else {
@@ -222,7 +222,7 @@ void loop() {
     // Add to total and cycle usage only if pump is ON
     if (isPumpOn) {
       totalLiters += litersInInterval;
-      cycleUsage += litersInInterval;           // Track current cycle usage
+      current_cycle_volume_l += litersInInterval;           // Track current cycle usage
     }
 
     // --- Debug Output ---
@@ -233,7 +233,7 @@ void loop() {
     Serial.print(" L/min | Total: ");
     Serial.print(totalLiters, 2);
     Serial.print(" L | Cycle: ");
-    Serial.print(cycleUsage, 2);
+    Serial.print(current_cycle_volume_l, 2);
     Serial.println(" L");
 
     // --- Construct JSON Payload ---
@@ -242,7 +242,7 @@ void loop() {
     doc["moisture"] = round(currentMoisture * 100) / 100.0;
     doc["flow_rate"] = round(flowRate * 100) / 100.0;
     doc["total_flow"] = round(totalLiters * 100) / 100.0;
-    doc["cycle_usage"] = round(cycleUsage * 100) / 100.0;  
+    doc["cycle_usage"] = round(current_cycle_volume_l * 100) / 100.0;
     doc["pump_status"] = isPumpOn ? "ON" : "OFF";
 
     String payload;
