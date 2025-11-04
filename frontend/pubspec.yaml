@@ -1,0 +1,25 @@
+name: ifs325group_irrigation
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  audioplayers: ^6.5.1
+  fl_chart: ^1.1.1
+  flutter:
+    sdk: flutter
+  http: ^1.5.0
+  intl: ^0.20.2
+  vibration: ^3.1.4
+  web_socket_channel: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

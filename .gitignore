@@ -1,0 +1,36 @@
+# === General ===
+.DS_Store
+*.log
+*.tmp
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+*.egg-info/
+
+# === Flutter / Dart ===
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/
+.packages
+.pub-cache/
+pubspec.lock
+
+# === Arduino ===
+*.hex
+*.elf
+
+# === IDEs ===
+.vscode/
+.idea/
+*.iml
+
+# === Environment Files ===
+.env
+.env.*

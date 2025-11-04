@@ -1,0 +1,8 @@
+uvicorn~=0.38.0
+paho-mqtt~=2.1.0
+fastapi~=0.119.0
+pydantic~=2.12.3
+APScheduler~=3.11.0
+gunicorn
+httpx~=0.28.1
+python-dotenv~=1.1.1
