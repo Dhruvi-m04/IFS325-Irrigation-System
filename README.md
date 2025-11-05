@@ -31,7 +31,7 @@ The system enables farmers to:
  [MQTT Broker] ⇄ [Python Backend] ⇄ [Oracle APEX Database]
      │
      ▼
- [Flutter Frontend (Web/Mobile)]
+ [Flutter Frontend (Mobile)]
 ```
 
 ⚙️ Setup Instructions
@@ -82,7 +82,7 @@ flutter run
 
 🔐 Security Configuration
 
-* Use **MQTT over TLS/SSL** and **HTTPS** for secure communication.
+* Use MQTT over TLS/SSL and HTTPS for secure communication.
 * Store credentials in a `.env` file (never hardcode).
 * Implement access control for MQTT topics and API endpoints.
 * Enforce strong password policies for Oracle APEX users.
@@ -94,7 +94,7 @@ Code: Commit and push regularly to GitHub.
 Logs: Store MQTT and backend logs daily for traceability.
 Restart backend using:
 
-  ```bash
+  ```
   systemctl restart irrigation-backend.service
   ```
 
@@ -110,7 +110,7 @@ Restart backend using:
 arc-smart-irrigation/
 ├── arduino/           # ESP32 firmware code
 ├── backend/           # Python backend (MQTT + REST API)
-├── frontend/          # Flutter web/mobile application
+├── frontend/          # Flutter mobile application
 └── .gitignore         # Ignored files and directories for Git
 
 🌟 Future Enhancements
