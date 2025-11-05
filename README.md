@@ -82,7 +82,7 @@ flutter run
 
 🔐 Security Configuration
 
-* Use MQTT over TLS/SSL and HTTPS for secure communication.
+* Use **MQTT over TLS/SSL** and **HTTPS** for secure communication.
 * Store credentials in a `.env` file (never hardcode).
 * Implement access control for MQTT topics and API endpoints.
 * Enforce strong password policies for Oracle APEX users.
@@ -100,7 +100,7 @@ Restart backend using:
 
 📊 Monitoring & Maintenance
 
-* Monitor MQTT traffic using Mosquitto Stats.
+* Monitor MQTT traffic using **Mosquitto Stats**.
 * Check backend uptime at `/api/health`.
 * Use **Flutter DevTools** to track performance.
 * Review Oracle APEX dashboard for data frequency and query speed.
@@ -108,9 +108,13 @@ Restart backend using:
 🧱 Folder Structure
 
 arc-smart-irrigation/
+
 ├── arduino/           # ESP32 firmware code
+
 ├── backend/           # Python backend (MQTT + REST API)
+
 ├── frontend/          # Flutter mobile application
+
 └── .gitignore         # Ignored files and directories for Git
 
 🌟 Future Enhancements
