@@ -53,8 +53,8 @@ Ensure you have the following installed:
 
 ```
 # Clone the repository
-git clone https://github.com/<your-username>/arc-smart-irrigation.git
-cd arc-smart-irrigation/backend
+git clone https://github.com/Dhruvi-m04/IFS325-Irrigation-System/edit/main/README.md
+cd IFS325-Irrigation-System/backend
 
 # Install dependencies
 pip install -r requirements.txt
@@ -100,7 +100,7 @@ Restart backend using:
 
 📊 Monitoring & Maintenance
 
-* Monitor MQTT traffic using **Mosquitto Stats**.
+* Monitor MQTT traffic using Mosquitto Stats.
 * Check backend uptime at `/api/health`.
 * Use **Flutter DevTools** to track performance.
 * Review Oracle APEX dashboard for data frequency and query speed.
